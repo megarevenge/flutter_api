@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_6/models/profile.dart';
 import 'package:flutter_application_6/services/remote_service.dart';
 // import 'dart:ui';
+import 'package:marquee/marquee.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -123,23 +124,62 @@ void _showProfilePopup(BuildContext context, dynamic profile) {
                 ),
               ),
               SizedBox(height: 8),
-              Text(
-                profile.name,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              SizedBox(
+                height: 30,
+                child: Marquee(
+                  text: profile.name,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  blankSpace:
+                      20.0, // Space between the end of the text and the repeat start
+                  velocity: 50.0, // Speed pixels per second
+                  pauseAfterRound: const Duration(
+                    seconds: 1,
+                  ),
+                  startPadding: 15.0,
+                  accelerationDuration: const Duration(seconds: 1),
+                  accelerationCurve: Curves.easeIn,
+                  decelerationDuration: const Duration(milliseconds: 500),
+                  decelerationCurve: Curves.easeOut,
+                ),
               ),
               SizedBox(height: 8),
-              Text(profile.username, style: TextStyle(fontSize: 20)),
+              Text(
+                profile.username,
+                style: TextStyle(fontSize: 20),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
               SizedBox(height: 8),
-              Text(profile.email, style: TextStyle(fontSize: 16)),
+              Text(
+                profile.email,
+                style: TextStyle(fontSize: 16),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
               SizedBox(height: 8),
-              Text(profile.phone, style: TextStyle(fontSize: 16)),
+              Text(
+                profile.phone,
+                style: TextStyle(fontSize: 16),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
               SizedBox(height: 8),
-              Text(profile.website, style: TextStyle(fontSize: 16)),
+              Text(
+                profile.website,
+                style: TextStyle(fontSize: 16),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
               SizedBox(height: 8),
-              Text(profile.company.name, style: TextStyle(fontSize: 16)),
-          
+              Text(
+                profile.company.name,
+                style: TextStyle(fontSize: 16),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+
               SizedBox(height: 20),
-          
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -150,10 +190,7 @@ void _showProfilePopup(BuildContext context, dynamic profile) {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       foregroundColor: Colors.black,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 30,
-                        vertical: 15,
-                      ),
+
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(
                           20,
@@ -162,16 +199,13 @@ void _showProfilePopup(BuildContext context, dynamic profile) {
                     ),
                     child: Text('Back'),
                   ),
-                  SizedBox(width: 10,),
+                  SizedBox(width: 10),
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blueAccent, // Background color
                       foregroundColor: Colors.white, // Text/icon color
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 30,
-                        vertical: 15,
-                      ),
+
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(
                           20,
